@@ -1,0 +1,273 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light dark;
+  --bg: #fff;
+  --etch-opacity: .42;
+  --etch-blend: multiply;
+  --etch-filter: grayscale(1) contrast(1.65) brightness(1.08);
+  --text: #171717;
+  --name-shine-edge: #23262b;
+  --name-shine-center: #555b64;
+  --text-secondary: #374151;
+  --text-muted: #6b7280;
+  --border: #e5e7eb;
+  --border-hover: #171717;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Crimson Pro', Georgia, serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111;
+    --etch-opacity: .36;
+    --etch-blend: screen;
+    --etch-filter: grayscale(1) invert(1) contrast(1.5);
+    --text: #f3f4f6;
+    --name-shine-edge: #c3c7ce;
+    --name-shine-center: #fff;
+    --text-secondary: #e5e7eb;
+    --text-muted: #9ca3af;
+    --border: #27272a;
+    --border-hover: #f3f4f6;
+  }
+}
+
+html, body {
+  background-color: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizelegibility;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+
+/* Hero Etched Rocket Backdrop (Apollo 11) */
+.hero-backdrop {
+  pointer-events: none;
+  z-index: 0;
+  height: clamp(650px, 90vh, 920px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+.hero-backdrop-image {
+  object-fit: cover;
+  object-position: 58% 45%;
+  width: 100%;
+  height: 100%;
+  filter: var(--etch-filter);
+  opacity: var(--etch-opacity);
+  mix-blend-mode: var(--etch-blend);
+  position: absolute;
+  inset: 0;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 85%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 85%, transparent 100%);
+  transition: opacity 0.8s ease-in-out;
+}
+
+.hero-backdrop-texture {
+  background-image:
+    repeating-linear-gradient(135deg, var(--bg) 0 .7px, transparent .7px 3px),
+    repeating-linear-gradient(45deg, var(--bg) 0 .5px, transparent .5px 6px),
+    radial-gradient(circle, var(--bg) .6px, transparent .9px);
+  opacity: .55;
+  pointer-events: none;
+  background-size: auto, auto, 4px 5px;
+  position: absolute;
+  inset: 0;
+}
+
+.hero-backdrop-blur {
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 80%, #000 90%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 80%, #000 90%, transparent 100%);
+}
+
+.hero-backdrop-gradient {
+  background:
+    radial-gradient(ellipse at 58% 40%, transparent 40%, var(--bg) 100%),
+    linear-gradient(to bottom, transparent 75%, var(--bg) 95%, var(--bg) 100%);
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+}
+
+/* Site Container */
+.site-container {
+  z-index: 1;
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 5rem 1.5rem 6rem;
+  position: relative;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  color: var(--text);
+  margin: 0;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+  transition: text-decoration-color .15s, color .15s;
+}
+
+a:hover {
+  text-decoration-color: var(--border-hover);
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Header & Typography */
+.header {
+  margin-bottom: 3.5rem;
+}
+
+h1 {
+  letter-spacing: -.015em;
+  width: fit-content;
+  color: var(--text);
+  background: linear-gradient(to bottom, var(--name-shine-edge) 0%, var(--name-shine-edge) 15%, var(--name-shine-center) 48%, var(--name-shine-edge) 85%, var(--name-shine-edge) 100%);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-size: 2.5rem;
+}
+
+.bio {
+  color: var(--text-secondary);
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 32rem;
+  margin-top: .875rem;
+  font-size: 1.05rem;
+  display: flex;
+}
+
+.bio-statement {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.links {
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .6rem;
+  margin-top: 1.25rem;
+  font-size: .9375rem;
+  display: flex;
+}
+
+.divider {
+  color: var(--text-secondary);
+  user-select: none;
+}
+
+/* Projects Section */
+.section {
+  margin-top: 3.5rem;
+}
+
+h2 {
+  letter-spacing: -.01em;
+  margin-bottom: 1.5rem;
+  font-size: 1.625rem;
+}
+
+.project-list {
+  flex-direction: column;
+  gap: 1.75rem;
+  display: flex;
+}
+
+.project-item {
+  flex-direction: column;
+  display: flex;
+}
+
+.project-header {
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  display: flex;
+}
+
+.project-title {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+  align-items: center;
+  gap: .25rem;
+  font-size: 1.05rem;
+  font-weight: 500;
+  display: inline-flex;
+}
+
+.project-title:hover {
+  text-decoration-color: var(--border-hover);
+}
+
+.arrow {
+  color: var(--text-muted);
+  font-size: .85em;
+  transition: transform .15s, color .15s;
+  display: inline-block;
+}
+
+.project-title:hover .arrow {
+  color: var(--text);
+  transform: translate(2px, -2px);
+}
+
+.project-year {
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+  font-size: .875rem;
+}
+
+.project-desc {
+  color: var(--text-muted);
+  margin-top: .35rem;
+  font-size: .9375rem;
+  line-height: 1.55;
+}
+
+.project-tech {
+  color: var(--text-muted);
+  letter-spacing: .01em;
+  margin-top: .35rem;
+  font-size: .8125rem;
+}
