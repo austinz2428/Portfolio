@@ -1,12 +1,51 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Sun, Moon } from 'lucide-react';
 import { portfolioData } from './data/portfolioData';
 import apolloImg from './assets/apollo11.jpg';
 
 export default function App() {
   const { personal, projects } = portfolioData;
 
+  // Default mode is light mode (the current way it is) on first entry
+  const [darkMode, setDarkMode] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('theme');
+      if (saved) {
+        return saved === 'dark';
+      }
+    }
+    return false; // Default light
+  });
+
+  useEffect(() => {
+    const root = document.documentElement;
+    if (darkMode) {
+      root.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      root.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [darkMode]);
+
   return (
     <>
+      {/* Top Right Sun/Moon Theme Toggle */}
+      <div className="fixed top-5 right-5 sm:top-6 sm:right-8 z-50">
+        <button
+          onClick={() => setDarkMode((prev) => !prev)}
+          aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+          title={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+          className="p-2 rounded-full border border-[var(--border)] text-[var(--text-muted)] hover:text-[var(--text)] hover:border-[var(--border-hover)] bg-[var(--bg)]/80 backdrop-blur-sm transition-all duration-200 cursor-pointer focus:outline-none flex items-center justify-center shadow-xs"
+        >
+          {darkMode ? (
+            <Sun className="w-4 h-4 text-zinc-200" />
+          ) : (
+            <Moon className="w-4 h-4 text-zinc-600" />
+          )}
+        </button>
+      </div>
+
       {/* Apollo 11 Saturn V Etched Backdrop */}
       <div className="hero-backdrop" aria-hidden="true">
         <img
