@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Sun, Moon } from 'lucide-react';
 import { portfolioData } from './data/portfolioData';
 import apolloImg from './assets/apollo11.jpg';
+import apolloDarkImg from './assets/apollo11-dark.png';
 
 export default function App() {
   const { personal, projects } = portfolioData;
@@ -48,7 +49,7 @@ export default function App() {
       {/* Apollo 11 Saturn V Etched Backdrop */}
       <div className="hero-backdrop" aria-hidden="true">
         <img
-          src={apolloImg}
+          src={isDark ? apolloDarkImg : apolloImg}
           alt="Apollo 11 Saturn V Launch"
           className="hero-backdrop-image"
           loading="eager"
