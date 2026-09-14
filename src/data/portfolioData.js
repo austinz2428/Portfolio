@@ -7,11 +7,6 @@ export const portfolioData = {
     githubUsername: "austinz2428",
     githubUrl: "https://github.com/austinz2428",
   },
-  
-  resume: {
-    pdfUrl: "/resume.pdf",
-    filename: "Austin_Zilincik_Resume.pdf",
-  },
 
   projects: [
     {

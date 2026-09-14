@@ -1,5 +1,6 @@
 import React from 'react';
 import { portfolioData } from './data/portfolioData';
+import apolloImg from './assets/apollo11.jpg';
 
 export default function App() {
   const { personal, projects } = portfolioData;
@@ -9,8 +10,8 @@ export default function App() {
       {/* Apollo 11 Saturn V Etched Backdrop */}
       <div className="hero-backdrop" aria-hidden="true">
         <img
-          src="/apollo11.jpg"
-          alt=""
+          src={apolloImg}
+          alt="Apollo 11 Saturn V Launch"
           className="hero-backdrop-image"
           loading="eager"
           decoding="async"
