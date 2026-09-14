@@ -1,7 +1,7 @@
 export const portfolioData = {
   personal: {
     name: "Austin Zilincik",
-    statement1: "Software should be durable, efficient, and built with intention. As modern systems become heavier and more complex,",
+    statement1: "Software should be durable, efficient, and built with intention. Quality is about what you refine, not how much you add.",
     statement2: "I build software engineered with precision, discipline, and purpose.",
     email: "austinzilincik@oakland.edu",
     githubUsername: "austinz2428",
