@@ -19,20 +19,18 @@
   --font-serif: 'Crimson Pro', Georgia, serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #111;
-    --etch-opacity: .36;
-    --etch-blend: screen;
-    --etch-filter: grayscale(1) invert(1) contrast(1.5);
-    --text: #f3f4f6;
-    --name-shine-edge: #c3c7ce;
-    --name-shine-center: #fff;
-    --text-secondary: #e5e7eb;
-    --text-muted: #9ca3af;
-    --border: #27272a;
-    --border-hover: #f3f4f6;
-  }
+html.dark {
+  --bg: #111;
+  --etch-opacity: .36;
+  --etch-blend: screen;
+  --etch-filter: grayscale(1) invert(1) contrast(1.5);
+  --text: #f3f4f6;
+  --name-shine-edge: #c3c7ce;
+  --name-shine-center: #fff;
+  --text-secondary: #e5e7eb;
+  --text-muted: #9ca3af;
+  --border: #27272a;
+  --border-hover: #f3f4f6;
 }
 
 html, body {
