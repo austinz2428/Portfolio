@@ -3,9 +3,8 @@ import react from '@vitejs/plugin-react';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: './',
+  base: process.env.NODE_ENV === 'production' ? './' : '/',
   plugins: [react()],
-  appType: 'spa',
   server: {
     port: 3000,
     host: '127.0.0.1',

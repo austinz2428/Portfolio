@@ -270,3 +270,21 @@ h2 {
   margin-top: .35rem;
   font-size: .8125rem;
 }
+
+.project-demo-badge {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  border: 1px solid var(--border);
+  padding: 0.15rem 0.55rem;
+  border-radius: 9999px;
+  transition: all 0.15s ease;
+  font-family: var(--font-sans);
+  letter-spacing: 0.02em;
+}
+
+.project-demo-badge:hover {
+  color: var(--text);
+  border-color: var(--border-hover);
+  background-color: var(--border);
+}

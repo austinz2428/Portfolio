@@ -1,10 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { Sun, Moon } from 'lucide-react';
 import { portfolioData } from './data/portfolioData';
+import { fetchSyncedProjects } from './services/githubSync';
 import apolloImg from './assets/apollo11.jpg';
 
 export default function App() {
-  const { personal, projects } = portfolioData;
+  const { personal } = portfolioData;
+  const [projects, setProjects] = useState(portfolioData.projects);
+
+  // Synchronize repositories from GitHub API on load
+  useEffect(() => {
+    fetchSyncedProjects(personal.githubUsername, portfolioData.projects)
+      .then((synced) => {
+        if (synced && synced.length > 0) {
+          setProjects(synced);
+        }
+      })
+      .catch((err) => {
+        console.warn('GitHub sync failed, using default projects list:', err);
+      });
+  }, [personal.githubUsername]);
 
   // Default mode is light mode (the current way it is) on first entry
   const [darkMode, setDarkMode] = useState(() => {
@@ -104,6 +119,17 @@ export default function App() {
                       <span>{project.name}</span>
                       <span className="arrow" aria-hidden="true">↗</span>
                     </a>
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        className="project-demo-badge"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title="View live demo"
+                      >
+                        Live Demo ↗
+                      </a>
+                    )}
                   </div>
                   <p className="project-desc">{project.description}</p>
                   <p className="project-tech">{project.tech}</p>

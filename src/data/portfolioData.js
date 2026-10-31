@@ -10,6 +10,14 @@ export const portfolioData = {
 
   projects: [
     {
+      id: "shipfinder",
+      name: "ShipFinder",
+      url: "https://github.com/austinz2428/ShipFinder",
+      liveUrl: "https://austinz2428.github.io/ShipFinder/",
+      description: "Real-time maritime vessel tracking and 3D fairway simulation platform combining live global AIS positions, telemetry dossiers, and WebGL visualizations.",
+      tech: "JavaScript · WebGL · Real-Time AIS",
+    },
+    {
       id: "lr-compiler",
       name: "LR-Compiler",
       url: "https://github.com/austinz2428/LR-Compiler",
