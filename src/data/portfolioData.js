@@ -40,7 +40,7 @@ export const portfolioData = {
     {
       id: "portfolio",
       name: "Portfolio",
-      url: "https://github.com/austinz2428",
+      url: "https://github.com/austinz2428/Portfolio",
       description: "The minimalist portfolio you're viewing right now.",
       tech: "React · Vite · Tailwind CSS",
     },
